@@ -1,0 +1,109 @@
+FUNCTION_BLOCK firstpass
+
+VAR_INPUT
+    age: REAL;
+    score1: REAL;
+END_VAR
+
+VAR_OUTPUT
+    suspicion: REAL;
+END_VAR
+
+FUZZIFY age
+    TERM NOTAGED := (0, 1) (0.4, 1) (0.5, 0);
+    TERM MIDDLE := (0.45, 0) (0.59, 1) (0.7, 0);
+    TERM OLD := (0.65, 0) (0.71, 1) (1.0, 1);
+END_FUZZIFY
+
+FUZZIFY score1
+    TERM VERYHIGH := gauss 1 0.1;
+    TERM HIGH := gauss 0.75 0.1;
+    TERM MEDIUM := gauss 0.5 0.1;
+    TERM LOW := gauss 0.25 0.1;
+    TERM VERYLOW := gauss 0 0.1;
+END_FUZZIFY
+
+
+DEFUZZIFY suspicion
+    TERM VERYHIGH := gauss 1 0.1;
+    TERM HIGH := gauss 0.75 0.1;
+    TERM MEDIUM := gauss 0.5 0.1;
+    TERM LOW := gauss 0.25 0.1;
+    TERM VERYLOW := gauss 0 0.1;
+    METHOD: COG;
+END_DEFUZZIFY
+
+RULEBLOCK first
+    AND : MIN;
+    ACT : MIN;
+    ACCU : MAX;
+
+    RULE 1 : IF score1 IS VERYHIGH AND age IS OLD THEN suspicion IS VERYHIGH;
+    RULE 2 : IF score1 IS HIGH AND age IS OLD THEN suspicion IS HIGH;
+    RULE 3 : IF score1 IS MEDIUM AND age IS OLD THEN suspicion IS HIGH;
+    RULE 4 : IF score1 IS LOW AND age IS OLD THEN suspicion IS MEDIUM;
+    RULE 5 : IF score1 IS LOW AND age IS OLD THEN suspicion IS LOW;
+    RULE 6 : IF score1 IS VERYHIGH AND age IS MIDDLE THEN suspicion IS HIGH;
+    RULE 7 : IF score1 IS HIGH AND age IS MIDDLE THEN suspicion IS HIGH;
+    RULE 8 : IF score1 IS MEDIUM AND age IS MIDDLE THEN suspicion IS MEDIUM;
+    RULE 9 : IF score1 IS LOW AND age IS MIDDLE THEN suspicion IS LOW;
+    RULE 10 : IF score1 IS VERYLOW AND age IS MIDDLE THEN suspicion IS VERYLOW;
+    RULE 11 : IF score1 IS HIGH OR score1 IS VERYHIGH AND age IS NOTAGED THEN suspicion IS LOW;
+    RULE 12 : IF score1 IS VERYLOW OR score1 IS LOW OR score1 IS MEDIUM AND age IS NOTAGED THEN suspicion IS VERYLOW;
+END_RULEBLOCK
+
+END_FUNCTION_BLOCK
+
+FUNCTION_BLOCK secondpass
+
+VAR_INPUT
+    suspicion: REAL;
+    score2: REAL;
+END_VAR
+
+VAR_OUTPUT
+    probability: REAL;
+END_VAR
+
+FUZZIFY score2
+    TERM VERYHIGH := gauss 1 0.1;
+    TERM HIGH := gauss 0.75 0.1;
+    TERM MEDIUM := gauss 0.5 0.1;
+    TERM LOW := gauss 0.25 0.1;
+    TERM VERYLOW := gauss 0 0.1;
+END_FUZZIFY
+
+FUZZIFY suspicion
+    TERM VERYHIGH := gauss 1 0.1;
+    TERM HIGH := gauss 0.75 0.1;
+    TERM MEDIUM := gauss 0.5 0.1;
+    TERM LOW := gauss 0.25 0.1;
+    TERM VERYLOW := gauss 0 0.1;
+END_FUZZIFY
+
+DEFUZZIFY probability
+    TERM VERYHIGH := gauss 1 0.1;
+    TERM HIGH := gauss 0.75 0.1;
+    TERM MEDIUM := gauss 0.5 0.1;
+    TERM LOW := gauss 0.25 0.1;
+    TERM VERYLOW := gauss 0 0.1;
+    METHOD: COG;
+END_DEFUZZIFY
+
+RULEBLOCK second
+    AND : MIN;
+    ACT : MIN;
+    ACCU : MAX;
+
+    RULE 1 : IF score2 IS VERYHIGH AND suspicion IS VERYHIGH THEN probability IS VERYHIGH;
+    RULE 2 : IF score2 IS MEDIUM OR score2 IS HIGH AND suspicion IS HIGH THEN probability IS HIGH;
+    RULE 3 : IF score2 IS LOW AND suspicion IS HIGH THEN probability IS MEDIUM;
+    RULE 4 : IF score2 IS VERYLOW AND suspicion IS HIGH THEN probability IS LOW;
+    RULE 5 : IF score2 IS VERYHIGH AND suspicion IS MEDIUM THEN probability IS HIGH;
+    RULE 6 : IF score2 IS MEDIUM OR score2 IS HIGH AND suspicion IS MEDIUM THEN probability IS MEDIUM;
+    RULE 7 : IF score2 IS VERYLOW OR score2 IS LOW AND suspicion IS MEDIUM THEN probability IS LOW;
+    RULE 8 : IF score2 IS HIGH OR score2 IS VERYHIGH AND suspicion IS LOW THEN probability IS MEDIUM;
+    RULE 9 : IF score2 IS VERYLOW OR score2 IS LOW OR score2 IS MEDIUM AND suspicion IS LOW THEN probability IS VERYLOW;
+END_RULEBLOCK
+
+END_FUNCTION_BLOCK
