@@ -70,7 +70,7 @@ nav{
 }
 
 #currentProgress{
-  width: 10%;
+  width: 1%;
   height: 1rem;
   border-radius: 25px;
   background-color: #55cfd3;
@@ -135,6 +135,24 @@ nav{
   cursor: pointer;
   background-color:black;
   color:white;
+}
+
+.answerBtn{
+  cursor: pointer;
+  display: block;
+  height:5rem;
+  width: 25rem;
+  outline: none;
+  border: none;
+  font-size: 2rem;
+  margin:1rem auto;
+  background-color: white;
+  box-shadow: 2px 2px 13px 2px #B1B1B1;
+}
+
+.answerBtn:hover{
+  background-color: black;
+  color: white;
 }
 
 @keyframes App-logo-spin {
