@@ -8,7 +8,6 @@ import Slider from './Components/Slider'
 import Question from './Components/Question'
 
 function App() {
-  const baseURL = 'http://localhost:8080/api/result'
   const [slider,setSlider] = useState('true')
   const [quesNum,setQuesNum] = useState(1)
   const [currentScore,setScore] = useState({
@@ -19,9 +18,9 @@ function App() {
   return (
     <div className="App">
       <Nav />
-      <ProgressBar qNumber={{ setQuesNum, quesNum }} />
+      <ProgressBar qNumber={{ setQuesNum,setSlider,setScore, quesNum, slider,currentScore}} />
       {slider ? <Slider status={{ setSlider, setQuesNum,setScore, quesNum,currentScore }} /> : null}
-      {!slider ? <Question qNumber={{ setQuesNum, setScore, currentScore, quesNum }} /> : null}
+      {!slider ? <Question qNumber={{ setQuesNum, setScore,setSlider, currentScore, quesNum }} /> : null}
       
     </div>
   );

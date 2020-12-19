@@ -4,13 +4,14 @@ import '../App.css';
 const Slider = ({status}) =>{
     const [age,setAge] = useState('')
     const { setSlider, setQuesNum, setScore, quesNum, currentScore } = status
+
     const next = () => {
-        document.getElementById("ageNext").style.display="none";
-        document.getElementById("backBtn").style.visibility="visible";
-        setQuesNum(quesNum+1);
-        document.getElementById("currentProgress").style.width=(quesNum/17)*100+"%"
-        setSlider(false)
-        setScore({...currentScore,age:age})
+            document.getElementById("ageNext").style.display="none"
+            document.getElementById("backBtn").style.visibility="visible"
+            setQuesNum(quesNum+1)
+            document.getElementById("currentProgress").style.width=(quesNum/17)*100+"%"
+            setSlider(false)
+            setScore({...currentScore,age:age})
     }
     return(
         <div id="getAge">

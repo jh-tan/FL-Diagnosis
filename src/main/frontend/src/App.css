@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 *{
     margin:0;
     padding: 0;
@@ -6,6 +7,10 @@
 
 .App {
   text-align: center;
+}
+
+h3{
+  font-family:'Montserrat', sans-serif;
 }
 
 .App-logo {
@@ -151,6 +156,30 @@ nav{
 }
 
 .answerBtn:hover{
+  transition-duration: 300ms;
+  transform:scale(1.1);
+  background-color: black;
+  color: white;
+}
+
+.resultContainer{
+  margin-top: 1rem;
+}
+
+.resultContainer button{
+   cursor: pointer;
+  display: block;
+  height:5rem;
+  width: 25rem;
+  outline: none;
+  border: none;
+  font-size: 2rem;
+  margin:1rem auto;
+  background-color: white;
+  box-shadow: 2px 2px 13px 2px #B1B1B1;
+}
+
+.resultContainer button:hover{
   background-color: black;
   color: white;
 }

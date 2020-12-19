@@ -1,7 +1,8 @@
-import {React,useState} from 'react'
+import {React,useState,useEffect} from 'react'
 import axios from 'axios'
 import '../App.css';
 import Answer from './Answer';
+import Result from './Result'
 
 const qna = {
     q2:{
@@ -71,10 +72,11 @@ const qna = {
 }
 
 const Question = ({qNumber}) =>{
-    const {setQuesNum, setScore, currentScore, quesNum} = qNumber
+    const {setQuesNum, setScore,setSlider, currentScore, quesNum} = qNumber
     const [question,setQuestion] = useState(qna)
-    const currentQuestion = quesNum<=17?question[`q${quesNum}`].ans:null;
-    const calculateScore = (score) =>{
+    const [calculatedResult,setResult] = useState('')
+    const currentQuestion = quesNum < 18 ? question[`q${quesNum}`].ans : null
+    const calculateScore = () =>{
         const ans = [0,0]
         for(let i of currentScore.score1){
             ans[0]+=i
@@ -83,18 +85,27 @@ const Question = ({qNumber}) =>{
         for(let i of currentScore.score2)
             ans[1]+=i
         ans[1] = ans[1]/12
-        return {age:0.5,score1:ans[0],score2:ans[1]};
+        return {age:(currentScore.age<30?0.33:currentScore.age<60?0.66:0.99),score1:ans[0],score2:ans[1]};
     }
-    // axios.post('http://localhost:8080/api/result',calculateScore(currentScore))
+    
+    useEffect(()=>{
+        console.log(currentScore)
+        quesNum === 18?axios.post('/api/result',calculateScore(currentScore))
+        .then(result=>setResult(result.data)):console.log('')
+    },[currentScore])
+
+    
     return(
         <div>
             {
-            quesNum < 18 ?
-            <div>
-                {<h1>{question[`q${quesNum}`].question}</h1>}
-                <Answer Qanswer={{ setQuesNum, setScore, quesNum, currentScore, currentQuestion }} /> 
-            </div>:
-            <h1>aaa</h1>
+                quesNum < 18 ?
+                <div className="questionBank">
+                    <h1>{question[`q${quesNum}`].question}</h1>
+                    <Answer Qanswer={{ setQuesNum, setScore, quesNum, currentScore, currentQuestion }} /> 
+                </div>
+                :
+                    <Result result={{ setQuesNum, setSlider,setScore,calculatedResult }} />
+
             }
         </div>
     )
