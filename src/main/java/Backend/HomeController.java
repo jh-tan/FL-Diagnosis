@@ -17,6 +17,11 @@ public class HomeController {
         return answer;
     }
 
+    @GetMapping("/test")
+    public String test(String ans) {
+        return "test";
+    }
+
     @PostMapping("/api/result")
     public String postBody(@RequestBody ResultModel result){
         Fuzzylogic fl = new Fuzzylogic();
