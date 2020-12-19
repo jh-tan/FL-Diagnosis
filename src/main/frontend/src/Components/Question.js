@@ -90,8 +90,8 @@ const Question = ({qNumber}) =>{
     
     useEffect(()=>{
         console.log(currentScore)
-        quesNum === 18?axios.post('https://fl-lunglancer.herokuapp.com/api/result',calculateScore(currentScore))
-        .then(result=>setResult(result.data)):console.log('')
+        quesNum === 18?axios.post('/api/result',calculateScore(currentScore))
+        .then(result=>setResult(result.data)).catch(error=>console.log(error)):console.log('')
     },[currentScore])
 
     
