@@ -6,6 +6,7 @@ const Result = ({ result }) =>{
     const { setQuesNum, setSlider,setScore,calculatedResult } = result
     const reset = () =>{
         document.getElementById("myProgress").style.display="flex"
+        document.getElementById("backBtn").style.visibility="hidden"
         setQuesNum(1)
         setSlider(true)
         setScore({age:'',score1:[],score2:[]})
