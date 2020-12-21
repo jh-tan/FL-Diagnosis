@@ -1,5 +1,3 @@
-import logo from './logo.svg';
-import axios from 'axios'
 import {useState} from 'react'
 import './App.css';
 import Nav from './Components/Nav'

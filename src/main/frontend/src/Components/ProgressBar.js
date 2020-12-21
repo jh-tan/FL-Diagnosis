@@ -4,7 +4,7 @@ import '../App.css';
 const ProgressBar = ({qNumber}) => {
     const { setQuesNum,setSlider,setScore, quesNum, slider,currentScore} = qNumber
     useEffect(()=>{
-        document.getElementById("currentProgress").style.width=((quesNum)/17)*100+"%"
+        document.getElementById("currentProgress").style.width=((quesNum)/19)*100+"%"
     },[quesNum])
 
     const removeAns = ()=>{
@@ -30,7 +30,7 @@ const ProgressBar = ({qNumber}) => {
             <div id = "myBar">
                 <div id="currentProgress"></div>
             </div>
-            <div id = "progressText">{quesNum}/17</div>
+            <div id = "progressText">{quesNum}/19</div>
         </div>
     )
 }
