@@ -8,9 +8,9 @@ const ProgressBar = ({qNumber}) => {
     },[quesNum])
 
     const removeAns = ()=>{
-        quesNum <=6?
+        quesNum <=7?
         setScore({...currentScore,score1:currentScore.score1.filter((ans,i)=>i!==quesNum-3)}):
-        setScore({...currentScore,score2:currentScore.score2.filter((ans,j)=>j!==quesNum-7)})
+        setScore({...currentScore,score2:currentScore.score2.filter((ans,j)=>j!==quesNum-8)})
     }
     
     const back = () =>{
