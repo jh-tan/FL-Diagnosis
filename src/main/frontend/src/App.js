@@ -1,26 +1,26 @@
-import {useState} from 'react'
+import {BrowserRouter as Router, Switch,Route} from 'react-router-dom'
 import './App.css';
 import Nav from './Components/Nav'
-import ProgressBar from './Components/ProgressBar'
-import Slider from './Components/Slider'
-import Question from './Components/Question'
+import About from './Components/About'
+import Home from './Components/Home'
+import Project from './Components/Project'
+import Contact from './Components/Contact'
+
 
 function App() {
-  const [slider,setSlider] = useState('true')
-  const [quesNum,setQuesNum] = useState(1)
-  const [currentScore,setScore] = useState({
-        age:'',
-        score1:[],
-        score2:[]
-    })
+  
   return (
-    <div className="App">
-      <Nav />
-      <ProgressBar qNumber={{ setQuesNum,setSlider,setScore, quesNum, slider,currentScore}} />
-      {slider ? <Slider status={{ setSlider, setQuesNum,setScore, quesNum,currentScore }} /> : null}
-      {!slider ? <Question qNumber={{ setQuesNum, setScore,setSlider, currentScore, quesNum }} /> : null}
-      
-    </div>
+    <Router>
+      <div className="App">
+        <Nav />
+        <Switch>
+          <Route path="/" exact component={Home}/>
+          <Route path="/about" component={About}/>
+          <Route path="/project" component={Project}/>
+          <Route path="/contact" component={Contact}/>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 

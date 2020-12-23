@@ -38,7 +38,7 @@ const Question = ({qNumber}) =>{
                     <Answer Qanswer={{ setQuesNum, setScore, quesNum, currentScore, currentQuestion }} /> 
                 </div>
                 :
-                    <Result result={{ setQuesNum, setSlider,setScore,calculatedResult }} />
+                    <Result result={{ setQuesNum, setSlider,setScore,calculatedResult}} />
 
             }
         </div>
