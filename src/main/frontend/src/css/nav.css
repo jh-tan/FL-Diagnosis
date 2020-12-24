@@ -1,13 +1,19 @@
 
 *{
-margin: 0;
-padding: 0;
-box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-nav {
-    background-color: black;
-    box-shadow: var(--light-shadow);
+
+nav{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 10vh;
+  background-color: black;
+  color: white;
+  font-family: sans-serif;
 }
 
 .nav-header {
@@ -62,11 +68,6 @@ ul {
 
 a {
     text-decoration: none;
-}
-
-img{
-    height:3rem;
-    width:7rem;
 }
 
 .menuBar{

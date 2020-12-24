@@ -13,6 +13,55 @@ h3{
   font-family:'Montserrat', sans-serif;
 }
 
+.landing-bg{
+  height:100vh;
+  background-color: black;
+}
+
+
+.bg-text{
+  position:absolute;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height:100%;
+  background-color: rgba(0,0,0,0.2);
+}
+
+.bg-text p{
+  margin:1.5rem 0;
+  width: 50%;
+}
+
+.bg-text h3{
+  margin:1.5rem 0;
+}
+
+.bg-text button{
+   cursor: pointer;
+  display: block;
+  height:5rem;
+  width: 25rem;
+  outline: none;
+  border: none;
+  font-size: 2rem;
+  margin:1rem auto;
+  background-color: white;
+  color:black;
+}
+
+.bg-text button:hover{
+  transform: scale(1.1);
+  transition-duration: 300ms;
+}
+
+.bg-text a{
+  color:black;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -39,17 +88,6 @@ h3{
   color: #61dafb;
 }
  
-nav{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 10vh;
-  background-color: #343536;
-  color: white;
-  font-family: sans-serif;
-  box-shadow: 5px 5px 15px 5px #B1B1B1;
-}
-
 #myProgress{
   display:flex;
   flex-direction:row;
@@ -81,7 +119,6 @@ nav{
   background-color: #55cfd3;
   line-height: 30px; 
 }
-
 
 #backBtn{
   content: "";

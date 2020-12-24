@@ -1,22 +1,38 @@
+import React from 'react'
 import '../App.css';
-import {useState} from 'react'
-import ProgressBar from './ProgressBar'
-import Slider from './Slider'
-import Question from './Question'
+import { Link } from 'react-router-dom'
+import Particles from 'react-particles-js'
 
 const Home = () =>{
-    const [slider,setSlider] = useState('true')
-    const [quesNum,setQuesNum] = useState(1)
-    const [currentScore,setScore] = useState({
-            age:'',
-            score1:[],
-            score2:[]
-        })
     return(
-        <div>
-            <ProgressBar qNumber={{ setQuesNum,setSlider,setScore, quesNum, slider,currentScore}} />
-            {slider ? <Slider status={{ setSlider, setQuesNum,setScore, quesNum,currentScore }} /> : null}
-            {!slider ? <Question qNumber={{ setQuesNum, setScore,setSlider, currentScore, quesNum }} /> : null}
+        <div className="landing-bg">
+            <div className="bg-text">
+                <h1>Lung Cancer Diagnosis Expert System</h1>
+                <p>Lung cancer is one of the most deadly cancer and it is also one of the most
+                    common cancers in Malaysia. If lung cancer is found early, 
+                    the cancerous cell is still small and before it has spread, 
+                    it is more likely to be successfully treated.
+                </p>
+                <h3>Don't risk you life and start to do the test now </h3>
+                <button>
+                    <Link to="/diagnosis">
+                        Diagnose Now
+                    </Link>
+                </button>
+            </div>
+            <Particles id="ts-particles"
+                params={{ 
+                particles: { 
+                    number: { 
+                    value: 200, 
+                    density: { 
+                        enable: true, 
+                        value_area: 1000, 
+                    } 
+                    }, 
+                }, 
+                }} 
+            /> 
         </div>
     )
 }
