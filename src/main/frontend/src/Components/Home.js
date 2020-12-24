@@ -14,11 +14,11 @@ const Home = () =>{
                     it is more likely to be successfully treated.
                 </p>
                 <h3>Don't risk you life and start to do the test now </h3>
-                <button>
-                    <Link to="/diagnosis">
+                <Link to="/diagnosis">
+                    <button>
                         Diagnose Now
-                    </Link>
-                </button>
+                    </button>
+                </Link>
             </div>
             <Particles height="100vh" id="ts-particles"
                 params={{ 
