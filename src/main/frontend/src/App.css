@@ -14,7 +14,7 @@ h3{
 }
 
 .landing-bg{
-  height:100vh;
+  min-height:100vh;
   background-color: black;
 }
 
@@ -33,7 +33,7 @@ h3{
 
 .bg-text p{
   margin:1.5rem 0;
-  width: 50%;
+  width: 80%;
 }
 
 .bg-text h3{
@@ -43,8 +43,8 @@ h3{
 .bg-text button{
    cursor: pointer;
   display: block;
-  height:5rem;
-  width: 25rem;
+  height: 5rem;
+  width: 18rem;
   outline: none;
   border: none;
   font-size: 2rem;

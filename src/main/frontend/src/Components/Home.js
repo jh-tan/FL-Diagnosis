@@ -20,7 +20,7 @@ const Home = () =>{
                     </Link>
                 </button>
             </div>
-            <Particles id="ts-particles"
+            <Particles height="100vh" id="ts-particles"
                 params={{ 
                 particles: { 
                     number: { 
