@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap');
 *{
     margin:0;
     padding: 0;
@@ -13,11 +13,85 @@ h3{
   font-family:'Montserrat', sans-serif;
 }
 
+/* Navigation Bar */
+nav{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 10vh;
+  background-color: black;
+  color: white;
+  font-family: sans-serif;
+}
+
+.nav-header {
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 1rem;
+}
+
+.nav-toggle {
+font-size: 1.5rem;
+color: var(--clr-primary-5);
+background: transparent;
+border-color: transparent;
+transition: all 0.3s linear;
+cursor: pointer;
+}
+
+.nav-toggle:hover {
+    color: var(--clr-primary-1);
+    transform: rotate(90deg);
+}
+
+.links a {
+    /* color: var(--clr-grey-3); */
+    color:var(--clr-white);
+    font-size: 1rem;
+    text-transform: capitalize;
+    letter-spacing: var(--spacing);
+    display: block;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s linear;
+}
+
+.links a:hover {
+  transition-duration: 300ms;
+  transform:scale(1.15);
+}
+
+.links {
+  height: 0;
+  overflow: hidden;
+  transition: all 0.3s linear;
+}
+.show-links {
+  height: 10rem;
+}
+
+.links {
+    list-style-type: none;
+    margin: auto;
+}
+
+a {
+    text-decoration: none;
+}
+
+.menuBar{
+  width: 35px;
+  height: 5px;
+  background-color: white;
+  margin: 6px 0;
+}
+
+/*Particle background  */
+
 .landing-bg{
   min-height:100vh;
   background-color: black;
 }
-
 
 .bg-text{
   position:absolute;
@@ -67,11 +141,6 @@ h3{
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
 .App-header {
   background-color: #282c34;
@@ -87,7 +156,9 @@ h3{
 .App-link {
   color: #61dafb;
 }
- 
+
+/* Progress Bar */
+
 #myProgress{
   display:flex;
   flex-direction:row;
@@ -133,6 +204,7 @@ h3{
 }
 
 
+/* Age Slider & Age's Next Button*/
 #myRange{
   -webkit-appearance: none;
   display:block;
@@ -155,8 +227,8 @@ h3{
 }
 
 .slider::-webkit-slider-thumb:hover{
-    transition-duration: 500ms;
-    transform:scale(1.3);
+  transition-duration: 500ms;
+  transform:scale(1.3);
 }
 
 #getAge h3{
@@ -166,6 +238,7 @@ h3{
 
 #ageNext{
   padding:1.5rem 3.5rem;
+  margin-bottom: 1rem;
   background-color: white;
   border: none;
   box-shadow: 2px 2px 13px 2px #B1B1B1;
@@ -179,6 +252,7 @@ h3{
   color:white;
 }
 
+/* Yes&No Button */
 .answerBtn{
   cursor: pointer;
   display: block;
@@ -199,12 +273,13 @@ h3{
   color: white;
 }
 
+/* Result & Reset Button*/
 .resultContainer{
   margin-top: 1rem;
 }
 
 .resultContainer button{
-   cursor: pointer;
+  cursor: pointer;
   display: block;
   height:5rem;
   width: 25rem;
@@ -221,11 +296,116 @@ h3{
   color: white;
 }
 
+/* About pages */
+
+.aboutContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.aboutContainer h1,h2,p{
+  margin-bottom: 1rem;
+}
+
+.aboutContainer ul{
+  margin-left:5%;
+  margin-bottom: 1rem;
+}
+
+#aboutTitle{
+  margin-bottom: 2rem;
+}
+
+.collapsible .toggle{
+  background-color: #f7f7f7;
+  border: unset;
+  cursor: pointer;
+  font: unset;
+  height:5rem;
+  width:80vw;
+  border-radius: 5px;
+  color: black;
+  margin-bottom: 0.5rem;
+  outline: none;
+  font-family:'Montserrat', sans-serif ;
+  font-size: x-large ;
+  font-weight: 700;
+}
+
+.collapsible .content {
+  border:1px solid #afafaf;
+  text-align: justify;
+  padding: 1.5rem;
+  width:80vw;
+  border-radius: 5px;
+  margin-bottom: 0.5rem;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5rem;
+}
+
+.collapsible .content-parent{
+  height: 0px;
+  overflow: hidden;
+  transition: height ease-out 0.3s;
+}
+
+.toggle:hover{
+  background-color: black;
+  color:white;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .nav-center {
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem;
+  }
+  .nav-header {
+      padding: 0;
+  }
+  .nav-toggle {
+      display: none;
+  }
+  .links {
+      height: auto;
+      display: flex;
+  }
+  .links a {
+      padding: 0;
+      margin: 0 0.5rem;
+  }
+  .links a:hover {
+      padding: 0;
+      background: transparent;
+  }
+  .social-icons {
+      display: flex;
+  }
+  .social-icons a {
+      margin: 0 0.5rem;
+      color: var(--clr-primary-5);
+      transition: all 0.3s linear;
+  }
+  .social-icons a:hover {
+      color: var(--clr-primary-7);
   }
 }

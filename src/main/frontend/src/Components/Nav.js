@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import '../css/nav.css'
+import '../App.css';
 
 const Nav = ()=>{
     return (
@@ -30,11 +30,6 @@ const Nav = ()=>{
                     <Link to="project">
                         <li>
                             Project
-                        </li>
-                    </Link>
-                    <Link to="contact">
-                        <li>
-                            Contact
                         </li>
                     </Link>
                 </ul>
