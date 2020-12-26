@@ -391,6 +391,19 @@ a {
   color:white;
 }
 
+/* Project Detail */
+.projectContainer{
+  background-color: #f7f7f7;
+  max-width: 80vw;
+  margin: 1rem auto;
+}
+
+.projectDetail{
+  text-align: justify;
+  padding: 1rem 2rem;
+  margin: 1.5rem auto;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
