@@ -4,7 +4,7 @@ const qna = {
         ans:["Yes","No"]
     },
     q3:{
-        question:"Are you a passive smoker",
+        question:"Do you always expose to secondhand smoke",
         ans:["Yes","No"]
     },
     q4:{

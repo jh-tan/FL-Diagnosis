@@ -30,7 +30,7 @@ const Home = () =>{
                         value_area: 1000, 
                     } 
                     }, 
-                }, 
+                } 
                 }} 
             /> 
         </div>
