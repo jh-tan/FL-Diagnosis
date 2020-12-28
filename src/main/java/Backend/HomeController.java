@@ -1,19 +1,21 @@
 package Backend;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 
-@RestController
+@Controller
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 
 public class HomeController {
     private String answer = null;
     @GetMapping("/api/result")
+    @ResponseBody
     public String Home(String ans) {
         return answer;
     }
@@ -24,6 +26,7 @@ public class HomeController {
     }
 
     @PostMapping("/api/result")
+    @ResponseBody
     public String postBody(@RequestBody ResultModel result){
         Fuzzylogic fl = new Fuzzylogic();
         answer = fl.run((float) result.age, (float) result.score1, (float) result.score2);
