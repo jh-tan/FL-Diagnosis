@@ -22,7 +22,7 @@ public class HomeController {
 
     @RequestMapping(value={"/about", "/diagnosis", "/project" })
     public String HomePage() {
-        return "index";
+        return "index.html";
     }
 
     @PostMapping("/api/result")
