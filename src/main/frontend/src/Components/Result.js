@@ -45,7 +45,7 @@ const Result = ({ result }) =>{
                     </table>
                     <i>Disclaimer: This result does not provide a definitive diagnosis but 
                         only estimates the probability of a lung cancer being present or absent.
-                        For more accurate diagnosis result, please head to the hospital for tht test.
+                        For more accurate diagnosis result, please head to the hospital for the test.
                     </i>
                 </div>
                 <button onClick={reset}>Reset</button>
