@@ -8,7 +8,7 @@ import {qna} from './questionBank'
 const Question = ({qNumber}) =>{
     const {setQuesNum, setScore,setSlider, currentScore, quesNum} = qNumber
     const question = qna
-    const [calculatedResult,setResult] = useState('')
+    const [calculatedResult,setResult] = useState({})
     const currentQuestion = quesNum < 20 ? question[`q${quesNum}`].ans : null
     const calculateScore = () =>{
         const ans = [0,0]
@@ -19,7 +19,7 @@ const Question = ({qNumber}) =>{
         for(let i of currentScore.score2)
             ans[1]+=i
         ans[1] = ans[1]/13
-        return {age:(currentScore.age<30?0.33:currentScore.age<60?0.66:0.99),score1:ans[0],score2:ans[1]};
+        return {age:(currentScore.age<45?0.50:currentScore.age<65?0.7:1.0),score1:ans[0],score2:ans[1]};
     }
     
     useEffect(()=>{

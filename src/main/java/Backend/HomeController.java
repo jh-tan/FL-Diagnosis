@@ -1,5 +1,5 @@
 package Backend;
-
+import java.text.DecimalFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,19 +27,20 @@ public class HomeController {
 
     @PostMapping("/api/result")
     @ResponseBody
-    public String postBody(@RequestBody ResultModel result){
+    public AnswerModel postBody(@RequestBody ResultModel result){
+        DecimalFormat df = new DecimalFormat("0.00000");
         Fuzzylogic fl = new Fuzzylogic();
         answer = fl.run((float) result.age, (float) result.score1, (float) result.score2);
         double calculated = Double.parseDouble(answer);
-        if(calculated<0.19)
-            return "Very Low";
-        else if (calculated > 0.19 && calculated <0.39)
-            return "Low";
-        else if(calculated > 0.4 && calculated < 0.59)
-            return "Medium";
-        else if(calculated > 0.6 && calculated < 0.79)
-            return "High";
+        if (calculated <= 0.19)
+            return new AnswerModel("Very Low",df.format(calculated));
+        else if (calculated > 0.19 && calculated <= 0.40)
+            return new AnswerModel("Low",df.format(calculated));
+        else if (calculated > 0.4 && calculated <= 0.60)
+            return new AnswerModel("Medium",df.format(calculated));
+        else if (calculated > 0.6 && calculated <= 0.80)
+            return new AnswerModel("High",df.format(calculated));
         else
-            return "Very High";
+            return new AnswerModel("Very High",df.format(calculated));
     }
 }
