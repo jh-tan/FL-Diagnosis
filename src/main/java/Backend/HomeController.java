@@ -32,9 +32,9 @@ public class HomeController {
         Fuzzylogic fl = new Fuzzylogic();
         answer = fl.run((float) result.age, (float) result.score1, (float) result.score2);
         double calculated = Double.parseDouble(answer);
-        if (calculated <= 0.19)
+        if (calculated <= 0.20)
             return new AnswerModel("Very Low",df.format(calculated));
-        else if (calculated > 0.19 && calculated <= 0.40)
+        else if (calculated > 0.2 && calculated <= 0.40)
             return new AnswerModel("Low",df.format(calculated));
         else if (calculated > 0.4 && calculated <= 0.60)
             return new AnswerModel("Medium",df.format(calculated));
