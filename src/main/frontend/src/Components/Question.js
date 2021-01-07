@@ -9,13 +9,13 @@ const Question = ({qNumber}) =>{
     const {setQuesNum, setScore,setSlider, currentScore, quesNum} = qNumber
     const question = qna
     const [calculatedResult,setResult] = useState({})
-    const currentQuestion = quesNum < 20 ? question[`q${quesNum}`].ans : null
+    const currentQuestion = quesNum < 21 ? question[`q${quesNum}`].ans : null
     const calculateScore = () =>{
         const ans = [0,0]
         for(let i of currentScore.score1){
             ans[0]+=i
         }
-        ans[0] = ans[0]/5
+        ans[0] = ans[0]/6
         for(let i of currentScore.score2)
             ans[1]+=i
         ans[1] = ans[1]/13
@@ -24,7 +24,7 @@ const Question = ({qNumber}) =>{
     
     useEffect(()=>{
         console.log(currentScore)
-        quesNum === 20?axios.post('/api/result',calculateScore(currentScore))
+        quesNum === 21?axios.post('/api/result',calculateScore(currentScore))
         .then(result=>setResult(result.data)).catch(error=>console.log(error)):console.log('')
     },[currentScore])
 
@@ -32,7 +32,7 @@ const Question = ({qNumber}) =>{
     return(
         <div>
             {
-                quesNum < 20 ?
+                quesNum < 21 ?
                 <div className="questionBank">
                     <h1>{question[`q${quesNum}`].question}</h1>
                     <Answer Qanswer={{ setQuesNum, setScore, quesNum, currentScore, currentQuestion }} /> 

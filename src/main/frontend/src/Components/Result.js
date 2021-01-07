@@ -31,13 +31,19 @@ const Result = ({ result }) =>{
                                 <td>Your age</td>
                                 <td id="tableAns">{currentScore.age}</td>
                             </tr>
+                            <tr>
+                                <td>Gender</td>
+                                <td id="tableAns">{currentScore.score1[0]===1?'Male':'Female'}</td>
+                            </tr>
                             {
                                 userScore.map((item,index)=>{
                                     return(
+                                        index>0?
                                         <tr key={index + 2}>
                                             <td>{qna[`q${index+2}`].question}</td>
                                             {item===0?<td id="tableAns">No</td>:<td id="tableAns">Yes</td>}
                                         </tr>
+                                        :null
                                     )
                                 })
                             }

@@ -4,13 +4,13 @@ import '../App.css';
 const ProgressBar = ({qNumber}) => {
     const { setQuesNum,setSlider,setScore, quesNum, slider,currentScore} = qNumber
     useEffect(()=>{
-        document.getElementById("currentProgress").style.width=((quesNum)/19)*100+"%"
+        document.getElementById("currentProgress").style.width=((quesNum)/20)*100+"%"
     },[quesNum])
 
     const removeAns = ()=>{
-        quesNum <=7?
+        quesNum <=8?
         setScore({...currentScore,score1:currentScore.score1.filter((ans,i)=>i!==quesNum-3)}):
-        setScore({...currentScore,score2:currentScore.score2.filter((ans,j)=>j!==quesNum-8)})
+        setScore({...currentScore,score2:currentScore.score2.filter((ans,j)=>j!==quesNum-9)})
     }
     
     const back = () =>{
@@ -30,7 +30,7 @@ const ProgressBar = ({qNumber}) => {
             <div id = "myBar">
                 <div id="currentProgress"></div>
             </div>
-            <div id = "progressText">{quesNum}/19</div>
+            <div id = "progressText">{quesNum}/20</div>
         </div>
     )
 }

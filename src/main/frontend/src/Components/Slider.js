@@ -9,7 +9,7 @@ const Slider = ({status}) =>{
             document.getElementById("ageNext").style.display="none"
             document.getElementById("backBtn").style.visibility="visible"
             setQuesNum(quesNum+1)
-            document.getElementById("currentProgress").style.width=(quesNum/19)*100+"%"
+            document.getElementById("currentProgress").style.width=(quesNum/20)*100+"%"
             setSlider(false)
             setScore({...currentScore,age:age})
     }
