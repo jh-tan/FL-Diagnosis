@@ -13,6 +13,7 @@ const Slider = ({status}) =>{
             setSlider(false)
             setScore({...currentScore,age:age})
     }
+
     return(
         <div id="getAge">
             <h1>Please tell us about your age</h1>

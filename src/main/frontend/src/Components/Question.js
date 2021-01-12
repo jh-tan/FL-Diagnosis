@@ -10,22 +10,28 @@ const Question = ({qNumber}) =>{
     const question = qna
     const [calculatedResult,setResult] = useState({})
     const currentQuestion = quesNum < 21 ? question[`q${quesNum}`].ans : null
+    
+    //Function to calculate the score 1 and score 2 by getting the average 
     const calculateScore = () =>{
         const ans = [0,0]
-        for(let i of currentScore.score1){
-            ans[0]+=i
+        const reducer = (sum, item) => {
+            return sum + item
         }
-        ans[0] = ans[0]/6
-        for(let i of currentScore.score2)
-            ans[1]+=i
-        ans[1] = ans[1]/13
-        return {age:(currentScore.age<45?0.50:currentScore.age<65?0.7:1.0),score1:ans[0],score2:ans[1]};
+        ans[0] = currentScore.score1.reduce(reducer,0)/6
+        ans[1] = currentScore.score2.reduce(reducer,0)/13
+        return {
+            age: (currentScore.age < 45 ? 0.50 : currentScore.age < 65 ? 0.7 : 1.0),
+            score1: ans[0],
+            score2: ans[1]
+        }
     }
     
     useEffect(()=>{
         console.log(currentScore)
-        quesNum === 21?axios.post('/api/result',calculateScore(currentScore))
-        .then(result=>setResult(result.data)).catch(error=>console.log(error)):console.log('')
+        quesNum === 21
+        &&axios.post('/api/result',calculateScore(currentScore))
+                .then(result => setResult(result.data))
+                .catch(error => console.log(error))
     },[currentScore])
 
     

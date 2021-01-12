@@ -8,25 +8,27 @@ const ProgressBar = ({qNumber}) => {
     },[quesNum])
 
     const removeAns = ()=>{
-        quesNum <=8?
-        setScore({...currentScore,score1:currentScore.score1.filter((ans,i)=>i!==quesNum-3)}):
-        setScore({...currentScore,score2:currentScore.score2.filter((ans,j)=>j!==quesNum-9)})
+    // Remove the input from the respectively array based on the current question number 
+        quesNum <= 8
+        ? setScore({ ...currentScore, score1: currentScore.score1.filter((ans, i) => i !== quesNum - 3) })
+        : setScore({ ...currentScore, score2: currentScore.score2.filter((ans, j) => j !== quesNum - 9) })
     }
     
     const back = () =>{
+    // Callback function for the button
         return (
-            quesNum === 2 ? 
-            (setSlider(!slider),
-            document.getElementById("backBtn").style.visibility = "hidden",
-            setScore({age:'',score1:[],score2:[]}),
-            setQuesNum(quesNum - 1))
-            : (setQuesNum(quesNum - 1),
-                removeAns())
+            quesNum === 2 
+                ? (setSlider(!slider),
+                    document.getElementById("backBtn").style.visibility = "hidden",
+                    setScore({ age: '', score1: [], score2: [] }),
+                    setQuesNum(quesNum - 1))
+                : (setQuesNum(quesNum - 1), removeAns())
         )
     }
+
     return(
         <div id="myProgress">
-            <div id = "backBtn" onClick={()=>back()}></div>
+            <div id = "backBtn" onClick={back}></div>
             <div id = "myBar">
                 <div id="currentProgress"></div>
             </div>

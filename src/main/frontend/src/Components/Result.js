@@ -38,12 +38,11 @@ const Result = ({ result }) =>{
                             {
                                 userScore.map((item,index)=>{
                                     return(
-                                        index>0?
+                                        index > 0 &&
                                         <tr key={index + 2}>
                                             <td>{qna[`q${index+2}`].question}</td>
                                             {item===0?<td id="tableAns">No</td>:<td id="tableAns">Yes</td>}
                                         </tr>
-                                        :null
                                     )
                                 })
                             }
