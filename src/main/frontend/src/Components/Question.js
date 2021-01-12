@@ -20,7 +20,7 @@ const Question = ({qNumber}) =>{
         ans[0] = currentScore.score1.reduce(reducer,0)/6
         ans[1] = currentScore.score2.reduce(reducer,0)/13
         return {
-            age: (currentScore.age < 45 ? 0.50 : currentScore.age < 65 ? 0.7 : 1.0),
+            age: (currentScore.age <= 45 ? 0.50 : currentScore.age <= 65 ? 0.7 : 1.0),
             score1: ans[0],
             score2: ans[1]
         }
